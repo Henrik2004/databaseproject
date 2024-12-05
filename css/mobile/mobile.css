@@ -1,0 +1,67 @@
+.mobile {
+  display: none !important;
+}
+
+/* only mobile screen */
+@media only screen and (max-width: 767px) {
+  .mobile {
+    display: inherit !important;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+
+  .right.menu {
+    gap: 5px;
+  }
+
+  #mobile-menu-hamburger-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  #mobile-menu-pages-button {
+    position: absolute;
+    top: 95px;
+    right: 20px;
+    z-index: 100;
+  }
+
+  #dashboard-content {
+    min-height: unset;
+  }
+
+  .main-dashboard {
+    height: unset;
+  }
+
+  .application-image {
+    display: none;
+  }
+
+  .footer-content {
+    display: grid !important;
+    justify-content: center !important;
+  }
+
+  .ui.hexle.segment .ui.hexle.button {
+    margin-top: 120px;
+  }
+
+  .hexle.centered.segment {
+    margin: 20px !important;
+  }
+
+  .hexle.ui.container {
+    min-height: 250px !important;
+  }
+}
+
+@media only screen and (max-width: 1035px) {
+  #dashboard-top-menu {
+    display: none;
+  }
+}

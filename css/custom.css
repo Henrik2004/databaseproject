@@ -1,0 +1,694 @@
+/* colors */
+:root {
+    --primary: #2185d0;
+    --secondary: #00b5ad;
+    --full-white: #ffffff;
+    --damp-white: #f1f1f1;
+    --light-gray: #e6e6e6;
+    --cold-mid-gray: #3f3d56;
+    --blackgray: #1b1c1d;
+    --damp-black: #0f0f0f;
+    --full-black: #000000;
+}
+
+body,
+html {
+    height: unset !important;
+}
+
+main {
+    margin-top: -80px;
+}
+
+/* navbar */
+
+#menu-logo {
+    width: 100%;
+    height: 32px;
+}
+
+.hexle.head-menu {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    border-radius: 0px !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    width: 100% !important;
+}
+
+#hexle-head-menu {
+    margin: 0 !important;
+}
+
+.hidden-fast {
+    display: none !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* background */
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+.bg-white {
+    background-color: var(--full-white) !important;
+}
+
+.bg-damp-white {
+    background-color: var(--damp-white) !important;
+}
+
+.bg-light-gray {
+    background-color: var(--light-gray) !important;
+}
+
+.bg-cold-mid-gray {
+    background-color: var(--cold-mid-gray) !important;
+}
+
+.bg-blackgray {
+    background-color: var(--blackgray) !important;
+}
+
+.bg-damp-black {
+    background-color: var(--damp-black) !important;
+}
+
+.bg-black {
+    background-color: var(--full-black) !important;
+}
+
+/* gradient */
+/* Brightness Gradients */
+.hexle.yellow.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(44, 97%, 67%),
+            /* 20% heller */
+            #fbbd08,
+            /* Originalfarbe */
+            hsl(44, 97%, 27%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.orange.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(19, 88%, 59%),
+            /* 20% heller */
+            #f2711c,
+            /* Originalfarbe */
+            hsl(19, 88%, 19%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.red.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 82%, 64%),
+            /* 20% heller */
+            #db2828,
+            /* Originalfarbe */
+            hsl(0, 82%, 24%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.pink.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(327, 75%, 67%),
+            /* 20% heller */
+            #e03997,
+            /* Originalfarbe */
+            hsl(327, 75%, 27%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.violet.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(254, 74%, 58%),
+            /* 20% heller */
+            #6435c9,
+            /* Originalfarbe */
+            hsl(254, 74%, 18%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.blue.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(204, 76%, 70%),
+            /* 20% heller */
+            #2185d0,
+            /* Originalfarbe */
+            hsl(204, 76%, 30%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.teal.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(174, 100%, 56%),
+            /* 20% heller */
+            #00b5ad,
+            /* Originalfarbe */
+            hsl(174, 100%, 16%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.green.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(146, 63%, 67%),
+            /* 20% heller */
+            #21ba45,
+            /* Originalfarbe */
+            hsl(146, 63%, 27%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.olive.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(68, 88%, 67%),
+            /* 20% heller */
+            #b5cc18,
+            /* Originalfarbe */
+            hsl(68, 88%, 27%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.brown.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(24, 38%, 58%),
+            /* 20% heller */
+            #a5673f,
+            /* Originalfarbe */
+            hsl(24, 38%, 18%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.gray.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 70%),
+            /* 20% heller */
+            #767676,
+            /* Originalfarbe */
+            hsl(0, 0%, 30%)
+            /* 20% dunkler */
+        );
+}
+
+/* Hue Shift Gradients */
+.hexle.yellow.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(64, 97%, 47%),
+            /* 20% Hue nach rechts */
+            #fbbd08,
+            /* Originalfarbe */
+            hsl(24, 97%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.orange.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(39, 88%, 47%),
+            /* 20% Hue nach rechts */
+            #f2711c,
+            /* Originalfarbe */
+            hsl(-1, 88%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.button.orange.hue.gradient:hover {
+    background: linear-gradient(135deg,
+            hsl(-1, 88%, 47%),/* 20% Hue nach links */
+            #f2711c, /* Originalfarbe */
+            hsl(39, 88%, 47%)/* 20% Hue nach rechts */
+        );
+}
+
+.hexle.red.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 82%, 47%),
+            /* 20% Hue nach rechts */
+            #db2828,
+            /* Originalfarbe */
+            hsl(340, 82%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.pink.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(347, 75%, 47%),
+            /* 20% Hue nach rechts */
+            #e03997,
+            /* Originalfarbe */
+            hsl(307, 75%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.violet.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(274, 74%, 47%),
+            /* 20% Hue nach rechts */
+            #6435c9,
+            /* Originalfarbe */
+            hsl(234, 74%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.blue.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(224, 76%, 47%),
+            /* 20% Hue nach rechts */
+            #2185d0,
+            /* Originalfarbe */
+            hsl(184, 76%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.teal.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(194, 100%, 47%),
+            /* 20% Hue nach rechts */
+            #00b5ad,
+            /* Originalfarbe */
+            hsl(154, 100%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.green.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(166, 63%, 47%),
+            /* 20% Hue nach rechts */
+            #21ba45,
+            /* Originalfarbe */
+            hsl(126, 63%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.olive.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(88, 88%, 47%),
+            /* 20% Hue nach rechts */
+            #b5cc18,
+            /* Originalfarbe */
+            hsl(48, 88%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.brown.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(44, 38%, 47%),
+            /* 20% Hue nach rechts */
+            #a5673f,
+            /* Originalfarbe */
+            hsl(4, 38%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.gray.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 47%),
+            /* 20% Hue nach rechts */
+            #767676,
+            /* Originalfarbe */
+            hsl(-20, 0%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+/* Brightness Gradients */
+.hexle.primary.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(204, 76%, 67%),
+            /* 20% heller */
+            #2185d0,
+            /* Originalfarbe */
+            hsl(204, 76%, 27%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.secondary.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(174, 100%, 56%),
+            /* 20% heller */
+            #00b5ad,
+            /* Originalfarbe */
+            hsl(174, 100%, 16%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.full-white.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 100%),
+            /* Heller bleibt weiß */
+            #ffffff,
+            /* Originalfarbe */
+            hsl(0, 0%, 80%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.damp-white.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 100%),
+            /* 20% heller */
+            #f1f1f1,
+            /* Originalfarbe */
+            hsl(0, 0%, 75%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.light-gray.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 100%),
+            /* 20% heller */
+            #e6e6e6,
+            /* Originalfarbe */
+            hsl(0, 0%, 70%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.cold-mid-gray.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(243, 18%, 50%),
+            /* 20% heller */
+            #3f3d56,
+            /* Originalfarbe */
+            hsl(243, 18%, 10%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.blackgray.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 31%),
+            /* 20% heller */
+            #1b1c1d,
+            /* Originalfarbe */
+            hsl(0, 0%, 0%)
+            /* 20% dunkler */
+        );
+}
+
+.hexle.damp-black.brightness.gradient {
+    background: linear-gradient(135deg,
+            hsl(0, 0%, 26%),
+            /* 20% heller */
+            #0f0f0f,
+            /* Originalfarbe */
+            hsl(0, 0%, 0%)
+            /* 20% dunkler */
+        );
+}
+
+/* Hue Shift Gradients */
+.hexle.primary.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(224, 76%, 47%),
+            /* 20% Hue nach rechts */
+            #2185d0,
+            /* Originalfarbe */
+            hsl(184, 76%, 47%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.secondary.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(194, 100%, 36%),
+            /* 20% Hue nach rechts */
+            #00b5ad,
+            /* Originalfarbe */
+            hsl(154, 100%, 36%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.full-white.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 100%),
+            /* 20% Hue nach rechts */
+            #ffffff,
+            /* Originalfarbe */
+            hsl(-20, 0%, 100%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.damp-white.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 95%),
+            /* 20% Hue nach rechts */
+            #f1f1f1,
+            /* Originalfarbe */
+            hsl(-20, 0%, 95%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.light-gray.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 90%),
+            /* 20% Hue nach rechts */
+            #e6e6e6,
+            /* Originalfarbe */
+            hsl(-20, 0%, 90%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.cold-mid-gray.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(263, 18%, 30%),
+            /* 20% Hue nach rechts */
+            #3f3d56,
+            /* Originalfarbe */
+            hsl(223, 18%, 30%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.blackgray.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 11%),
+            /* 20% Hue nach rechts */
+            #1b1c1d,
+            /* Originalfarbe */
+            hsl(-20, 0%, 11%)
+            /* 20% Hue nach links */
+        );
+}
+
+.hexle.damp-black.hue.gradient {
+    background: linear-gradient(135deg,
+            hsl(20, 0%, 6%),
+            /* 20% Hue nach rechts */
+            #0f0f0f,
+            /* Originalfarbe */
+            hsl(-20, 0%, 6%)
+            /* 20% Hue nach links */
+        );
+}
+
+/* text gradient */
+.text.gradient {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+}
+
+.text.gradient::selection {
+    -webkit-background-clip: none !important;
+    -webkit-text-fill-color: var(--full-white) !important;
+}
+
+/* text */
+.hexle.centered.text {
+    text-align: center !important;
+}
+
+/* footer */
+.hexle.footer-logo {
+    width: 150px;
+}
+
+/* title */
+
+.hexle.title {
+    font-size: var(--font-size-fluid-3);
+    height: calc(var(--font-size-fluid-3) + 5px);
+}
+
+.hexle.sub.header {
+    margin-top: 20px !important;
+    font-size: var(--font-size-fluid-2);
+}
+
+.hexle.ui.container {
+    margin: 0px !important;
+    width: 100% !important;
+}
+
+.hexle.ui.container.padded {
+    padding: 20px !important;
+}
+
+.hexle.ui.container.verry.padded {
+    padding: 40px !important;
+}
+
+.hexle.ui.fluid.container {
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.landing {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(30vh + 140px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main.landing {
+    height: 60vh;
+}
+
+#landing-logo {
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+/* segment */
+.hexle.segment {
+    border-radius: 0px !important;
+    padding: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.hexle.margin.segment {
+    margin: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.hexle.round.segment {
+    border-radius: 20px !important;
+}
+
+.hexle.centered.segment {
+    margin: auto;
+}
+
+
+/* shadow */
+.shadow-big {
+    box-shadow: var(--shadow-4) !important;
+    border: none !important;
+}
+
+.shadow {
+    box-shadow: var(--shadow-2) !important;
+    border: none !important;
+}
+
+.light-glass {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.glass {
+    backdrop-filter: blur(10px) !important;
+}
+
+.light-dark-glass {
+    background: rgba(27, 28, 29, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.dark-glass {
+    background: rgba(27, 28, 29, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.light-border {
+    border: 1px solid var(--damp-white) !important;
+    box-shadow: var(--shadow-2) !important;
+}
+
+.dark-border {
+    border: 1px solid var(--damp-black) !important;
+    box-shadow: var(--shadow-2) !important;
+}
+
+/* button */
+.hexle.button {
+    border-radius: 20px !important;
+    transition: color 0.5s, background-image 0.5s !important;
+}
+
+.hexle.button.gradient:hover {
+    color: rgba(0, 0, 0, .6)
+}
+
+.hexle.centered.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    margin-top: 60px;
+}
+
+/* spacer */
+.hexle.spacer {
+    height: 20px !important;
+}
+
+.hexle.large.spacer {
+    height: 40px !important;
+}
+
+.hexle.ultra.large.spacer {
+    height: 60px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .hexle.head-menu {
+        position: sticky !important;
+        background-color: var(--damp-black) !important;
+    }
+
+    .hexle.container.main.landing {
+        height: 30vh;
+    }
+
+}
