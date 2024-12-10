@@ -27,6 +27,8 @@ RUN chmod 644 /usr/local/etc/php/php.ini
 
 RUN PHPRC=/usr/local/etc/php
 
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Restart Apache
 RUN systemctl restart apache2
 
