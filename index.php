@@ -66,4 +66,23 @@ if (session_status() == PHP_SESSION_NONE) {
 </html>
 <script>
     let api_url = 'http://localhost/php/engine.php';
+
+    $('#report-form').submit(function (e) {
+        e.preventDefault();
+        let reportType = $('#report-type').val();
+        $.ajax({
+            url: api_url,
+            type: 'POST',
+            data: {
+                action: 'createReport',
+                reportType: reportType
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
 </script>
