@@ -46,7 +46,8 @@ function createTables() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
-            cost DECIMAL NOT NULL
+            cost DECIMAL NOT NULL,
+            stock INT NOT NULL
         )',
         'CREATE TABLE servicepart (
             serviceId INT NOT NULL,

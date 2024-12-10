@@ -2,9 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-require_once 'php/engine.php';
-global $api_url;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +41,25 @@ global $api_url;
         <a class="item mobile-center" href="/services">
             Services
         </a>
+    </div>
+</div>
+<div class="ui container">
+    <div class="ui segment">
+        <h2>Create report</h2>
+        <form class="ui form" id="report-form">
+            <div class="field">
+                <label for="report-type">Report type</label>
+                <select name="report-type" id="report-type">
+                    <option value="1">Current cars</option>
+                    <option value="2">Current customers</option>
+                    <option value="3">Current salespersons</option>
+                    <option value="4">Current invoices</option>
+                    <option value="5">Current parts</option>
+                    <option value="6">Current services</option>
+                </select>
+            </div>
+            <button class="ui button" type="submit">Generate report</button>
+        </form>
     </div>
 </div>
 </body>

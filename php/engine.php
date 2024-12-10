@@ -70,6 +70,36 @@ if (isset($_POST['action'])) {
         case 'deleteSalesperson':
             deleteSalesperson();
             break;
+        case 'getParts':
+            getParts();
+            break;
+        case 'getPart':
+            getPart();
+            break;
+        case 'createPart':
+            createPart();
+            break;
+        case 'updatePart':
+            updatePart();
+            break;
+        case 'deletePart':
+            deletePart();
+            break;
+        case 'getServices':
+            getServices();
+            break;
+        case 'getService':
+            getService();
+            break;
+        case 'createService':
+            createService();
+            break;
+        case 'updateService':
+            updateService();
+            break;
+        case 'deleteService':
+            deleteService();
+            break;
         default:
             echo "Invalid action";
             exit();
@@ -297,6 +327,116 @@ function deleteSalesperson()
     global $DB_CONNECTION;
     $id = $_POST['id'];
     $stmt = $DB_CONNECTION->prepare("DELETE FROM salespersons WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+function getParts()
+{
+    global $DB_CONNECTION;
+    $stmt = $DB_CONNECTION->prepare("SELECT * FROM parts");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $parts = $result->fetch_all(MYSQLI_ASSOC);
+    echo json_encode($parts);
+}
+
+function getPart()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $stmt = $DB_CONNECTION->prepare("SELECT * FROM parts WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $part = $result->fetch_all(MYSQLI_ASSOC);
+    echo json_encode($part);
+}
+
+function createPart()
+{
+    global $DB_CONNECTION;
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $cost = $_POST['cost'];
+    $stock = $_POST['stock'];
+    $stmt = $DB_CONNECTION->prepare("INSERT INTO parts (name, description, cost, stock) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssdi", $name, $description, $cost, $stock);
+    $stmt->execute();
+}
+
+function updatePart()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $cost = $_POST['cost'];
+    $stock = $_POST['stock'];
+    $stmt = $DB_CONNECTION->prepare("UPDATE parts SET name = ?, description = ?, cost = ?, stock = ? WHERE id = ?");
+    $stmt->bind_param("ssdii", $name, $description, $cost, $stock, $id);
+    $stmt->execute();
+}
+
+function deletePart()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $stmt = $DB_CONNECTION->prepare("DELETE FROM parts WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+function getServices()
+{
+    global $DB_CONNECTION;
+    $stmt = $DB_CONNECTION->prepare("SELECT * FROM services");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $services = $result->fetch_all(MYSQLI_ASSOC);
+    echo json_encode($services);
+}
+
+function getService()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $stmt = $DB_CONNECTION->prepare("SELECT * FROM services WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $service = $result->fetch_all(MYSQLI_ASSOC);
+    echo json_encode($service);
+}
+
+function createService()
+{
+    global $DB_CONNECTION;
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $cost = $_POST['cost'];
+    $stmt = $DB_CONNECTION->prepare("INSERT INTO services (name, description, cost) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssd", $name, $description, $cost);
+    $stmt->execute();
+}
+
+function updateService()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $cost = $_POST['cost'];
+    $stmt = $DB_CONNECTION->prepare("UPDATE services SET name = ?, description = ?, cost = ? WHERE id = ?");
+    $stmt->bind_param("ssdi", $name, $description, $cost, $id);
+    $stmt->execute();
+}
+
+function deleteService()
+{
+    global $DB_CONNECTION;
+    $id = $_POST['id'];
+    $stmt = $DB_CONNECTION->prepare("DELETE FROM services WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
 }
