@@ -6,58 +6,58 @@ function createTables() {
 
     $statements = [
         'CREATE TABLE customers (
-            id INT PRIMARY KEY,
-            name VARCHAR(255),
-            address VARCHAR(255),
-            phone VARCHAR(20),
-            email VARCHAR(255)
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            address VARCHAR(255) NOT NULL,
+            phone VARCHAR(20) NOT NULL,
+            email VARCHAR(255) NOT NULL
         )',
         'CREATE TABLE salespersons (
-            id INT PRIMARY KEY,
-            name VARCHAR(255),
-            contactInfo VARCHAR(255)
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            contactInfo VARCHAR(255) NOT NULL
         )',
         'CREATE TABLE cars (
-            id INT PRIMARY KEY,
-            model VARCHAR(255),
-            year INT,
-            color VARCHAR(255),
-            mileage INT,
-            price DECIMAL,
-            customerId INT,
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            model VARCHAR(255) NOT NULL,
+            year INT NOT NULL,
+            color VARCHAR(255) NOT NULL,
+            mileage INT NOT NULL,
+            price DECIMAL NOT NULL,
+            customerId INT NOT NULL,
             FOREIGN KEY (customerId) REFERENCES customers(id)
         )',
         'CREATE TABLE invoices (
-            id INT PRIMARY KEY,
-            customerId INT,
-            salespersonId INT,
-            date DATE,
-            amount DECIMAL,
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            customerId INT NOT NULL,
+            salespersonId INT NOT NULL,
+            date VARCHAR(10) NOT NULL,
+            amount DECIMAL NOT NULL,
             FOREIGN KEY (customerId) REFERENCES customers(id),
             FOREIGN KEY (salespersonId) REFERENCES salespersons(id)
         )',
         'CREATE TABLE services (
-            id INT PRIMARY KEY,
-            name VARCHAR(255),
-            description TEXT,
-            cost DECIMAL
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            description TEXT NOT NULL,
+            cost DECIMAL NOT NULL
         )',
         'CREATE TABLE parts (
-            id INT PRIMARY KEY,
-            name VARCHAR(255),
-            description TEXT,
-            cost DECIMAL
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            description TEXT NOT NULL,
+            cost DECIMAL NOT NULL
         )',
         'CREATE TABLE servicepart (
-            serviceId INT,
-            partId INT,
+            serviceId INT NOT NULL,
+            partId INT NOT NULL,
             PRIMARY KEY (serviceId, partId),
             FOREIGN KEY (serviceId) REFERENCES services(id),
             FOREIGN KEY (partId) REFERENCES parts(id)
         )',
         'CREATE TABLE carpart (
-            carId INT,
-            partId INT,
+            carId INT NOT NULL,
+            partId INT NOT NULL,
             PRIMARY KEY (carId, partId),
             FOREIGN KEY (carId) REFERENCES cars(id),
             FOREIGN KEY (partId) REFERENCES parts(id)
@@ -66,6 +66,10 @@ function createTables() {
 
     foreach ($statements as $statement) {
         $stmt = $DB_CONNECTION->prepare($statement);
+        if ($stmt === false) {
+            // Handle error
+            die('Prepare failed: ' . $DB_CONNECTION->error);
+        }
         $stmt->execute();
     }
 }

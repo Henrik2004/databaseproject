@@ -6,9 +6,11 @@ services:
     volumes:
       - ./:/var/www/html
     depends_on:
-      - db
+      - mysql
+      - mongodb
+      - redis
 
-  db:
+  mysql:
     image: mysql:5.7
     ports:
       - "3306:3306"
@@ -20,5 +22,21 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/var/lib/mongo
+
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis
+
 volumes:
   db_data:
+  mongo_data:
+  redis_data:
