@@ -44,6 +44,8 @@ global $api_url;
         </a>
     </div>
 </div>
+<br>
+<br>
 <div class="ui container">
     <div class="ui segment">
         <h2>Customers</h2>

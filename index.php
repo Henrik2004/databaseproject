@@ -43,6 +43,8 @@ if (session_status() == PHP_SESSION_NONE) {
         </a>
     </div>
 </div>
+<br>
+<br>
 <div class="ui container">
     <div class="ui segment">
         <h2>Create report</h2>
