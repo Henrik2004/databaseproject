@@ -13,10 +13,17 @@ $redisConfig = [
     'port' => 6379
 ];
 
+$mongoConfig = [
+    'host' => 'mongodb',
+    'port' => 27017,
+    'database' => 'project_db'
+];
+
 try {
-    $dbManager = new DatabaseManager($mysqlConfig, $redisConfig);
+    $dbManager = new DatabaseManager($mysqlConfig, $redisConfig, $mongoConfig);
     $DB_CONNECTION = $dbManager->getMysqlConnection();
     $REDIS_CONNECTION = $dbManager->getRedisConnection();
+    $MONGO_CONNECTION = $dbManager->getMongoConnection();
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
     exit();

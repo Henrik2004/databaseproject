@@ -4,8 +4,9 @@ class DatabaseManager
 {
     private $mysqlConnection;
     private $redisConnection;
+    private $mongoConnection;
 
-    public function __construct($mysqlConfig, $redisConfig)
+    public function __construct($mysqlConfig, $redisConfig, $mongoConfig)
     {
         $this->mysqlConnection = new mysqli(
             $mysqlConfig['host'],
@@ -24,6 +25,8 @@ class DatabaseManager
         if (!$this->redisConnection->ping()) {
             throw new Exception("Redis connection failed");
         }
+
+        $this->mongoConnection = new MongoDB\Driver\Manager("mongodb://{$mongoConfig['host']}:{$mongoConfig['port']}/{$mongoConfig['database']}");
     }
 
     public function getMysqlConnection()
@@ -34,6 +37,11 @@ class DatabaseManager
     public function getRedisConnection()
     {
         return $this->redisConnection;
+    }
+
+    public function getMongoConnection()
+    {
+        return $this->mongoConnection;
     }
 
     public function __destruct()

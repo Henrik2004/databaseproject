@@ -29,6 +29,8 @@ RUN PHPRC=/usr/local/etc/php
 
 RUN pecl install redis && docker-php-ext-enable redis
 
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+
 # Restart Apache
 RUN systemctl restart apache2
 

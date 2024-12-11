@@ -7,6 +7,7 @@ require_once __DIR__ . '/../php/app_config.php';
 require_once __DIR__ . '/../php/mysql_tables.php';
 require_once __DIR__ . '/../php/mysql_functions.php';
 require_once __DIR__ . '/../php/redis_functions.php';
+require_once __DIR__ . '/../php/mongo_functions.php';
 
 createTables();
 if (isset($_POST['action'])) {
@@ -116,7 +117,7 @@ function createReport()
     $reportType = $_POST['reportType'];
     switch ($reportType) {
         case 1:
-            saveCurrentCars();
+            saveCarsReport();
             break;
         case 2:
             saveCurrentCustomers();
