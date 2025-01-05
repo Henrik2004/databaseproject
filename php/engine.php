@@ -106,6 +106,9 @@ if (isset($_POST['action'])) {
         case 'createReport':
             createReport();
             break;
+        case 'createOffer':
+            createOffer();
+            break;
         default:
             echo "Invalid action";
             exit();
@@ -124,6 +127,28 @@ function createReport()
             break;
         default:
             echo "Invalid report type";
+            exit();
+    }
+}
+
+function createOffer()
+{
+    $offerType = $_POST['offerType'];
+    $offerCarId = $_POST['offerCarId'];
+    $offerServiceId = $_POST['offerServiceId'];
+    $offerPartId = $_POST['offerPartId'];
+    switch ($offerType) {
+        case 1:
+            saveCarOffer($offerCarId);
+            break;
+        case 2:
+            saveServiceOffer($offerServiceId);
+            break;
+        case 3:
+            savePartOffer($offerPartId);
+            break;
+        default:
+            echo "Invalid offer type";
             exit();
     }
 }

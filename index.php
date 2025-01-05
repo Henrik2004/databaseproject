@@ -51,7 +51,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <form class="ui form" id="report-form">
             <div class="field">
                 <label for="report-type">Report type</label>
-                <select name="report-type" id="report-type">
+                <select name="report-type" id="report-type" class="ui selection dropdown">
                     <option value="1">Current cars</option>
                     <option value="2">Current customers</option>
                     <option value="3">Current salespersons</option>
@@ -64,10 +64,64 @@ if (session_status() == PHP_SESSION_NONE) {
         </form>
     </div>
 </div>
+<br>
+<br>
+<div class="ui container">
+    <div class="ui segment">
+        <h2>Create offer</h2>
+        <form class="ui form" id="offer-form">
+            <div class="field">
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="offer-type" id="offer-type">
+                    <div class="default text">Select offer type</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" data-value="1">Car offer</div>
+                        <div class="item" data-value="2">Service offer</div>
+                        <div class="item" data-value="3">Part offer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field" id="offer-car-id">
+                <label for="offer-car-id">Car ID</label>
+                <input type="text" name="offer-car-id" id="offer-car-id" placeholder="Car ID">
+            </div>
+            <div class="field" id="offer-service-id">
+                <label for="offer-service-id">Service ID</label>
+                <input type="text" name="offer-service-id" id="offer-service-id" placeholder="Service ID">
+            </div>
+            <div class="field" id="offer-part-id">
+                <label for="offer-part-id">Part ID</label>
+                <input type="text" name="offer-part-id" id="offer-part-id" placeholder="Part ID">
+            </div>
+            <button class="ui button" type="submit">Generate offer</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
 <script>
+    $('.selection.dropdown').dropdown({
+        action: 'activate',
+        onChange: function (value, text, $selectedItem) {
+            if (value === '1') {
+                $('#offer-car-id').show();
+                $('#offer-service-id').hide();
+                $('#offer-part-id').hide();
+            } else if (value === '2') {
+                $('#offer-car-id').hide();
+                $('#offer-service-id').show();
+                $('#offer-part-id').hide();
+            } else if (value === '3') {
+                $('#offer-car-id').hide();
+                $('#offer-service-id').hide();
+                $('#offer-part-id').show();
+            }
+        }
+    });
+
     let api_url = 'http://localhost/php/engine.php';
+    let offerForm = $('#offer-form');
 
     $('#report-form').submit(function (e) {
         e.preventDefault();
@@ -87,4 +141,31 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         });
     });
+
+    offerForm.submit(function (e) {
+        e.preventDefault();
+        let offerType = $('#offer-type').val();
+        let offerCarId = $('#offer-car-id').val();
+        let offerServiceId = $('#offer-service-id').val();
+        let offerPartId = $('#offer-part-id').val();
+        console.log(offerType, offerCarId, offerServiceId, offerPartId);
+        $.ajax({
+            url: api_url,
+            type: 'POST',
+            data: {
+                action: 'createOffer',
+                offerType: offerType,
+                offerCarId: offerCarId,
+                offerServiceId: offerServiceId,
+                offerPartId: offerPartId
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
 </script>
