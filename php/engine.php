@@ -104,15 +104,33 @@ if (isset($_POST['action'])) {
             deleteService();
             break;
         case 'createReport':
+            saveSnapshot();
             createReport();
             break;
         case 'createOffer':
+            saveSnapshot();
             createOffer();
+            break;
+        case 'getReports':
+            echo json_encode(getReports());
+            break;
+        case 'getOffers':
+            echo json_encode(getOffers());
             break;
         default:
             echo "Invalid action";
             exit();
     }
+}
+
+function saveSnapshot()
+{
+    saveCurrentCars();
+    saveCurrentCustomers();
+    saveCurrentParts();
+    saveCurrentServices();
+    saveCurrentInvoices();
+    saveCurrentSalespersons();
 }
 
 function createReport()
@@ -123,7 +141,19 @@ function createReport()
             saveCarsReport();
             break;
         case 2:
-            saveCurrentCustomers();
+            saveCustomersReport();
+            break;
+        case 3:
+            saveSalespersonsReport();
+            break;
+        case 4:
+            saveInvoicesReport();
+            break;
+        case 5:
+            savePartsReport();
+            break;
+        case 6:
+            saveServicesReport();
             break;
         default:
             echo "Invalid report type";
@@ -133,10 +163,10 @@ function createReport()
 
 function createOffer()
 {
-    $offerType = $_POST['offerType'];
-    $offerCarId = $_POST['offerCarId'];
-    $offerServiceId = $_POST['offerServiceId'];
-    $offerPartId = $_POST['offerPartId'];
+    $offerType = $_POST['offer-type'];
+    $offerCarId = $_POST['offer-car-id'];
+    $offerServiceId = $_POST['offer-service-id'];
+    $offerPartId = $_POST['offer-part-id'];
     switch ($offerType) {
         case 1:
             saveCarOffer($offerCarId);

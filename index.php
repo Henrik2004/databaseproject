@@ -98,12 +98,93 @@ if (session_status() == PHP_SESSION_NONE) {
         </form>
     </div>
 </div>
+<br>
+<br>
+<div class="ui container">
+    <div class="ui segment">
+        <h2>Reports</h2>
+        <table class="ui celled table" id="reports-table">
+            <thead>
+            <tr>
+                <th>Report Type</th>
+                <th>Report</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<div class="ui container">
+    <div class="ui segment">
+        <h2>Offers</h2>
+        <table class="ui celled table" id="offers-table">
+            <thead>
+            <tr>
+                <th>Offer Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $.ajax({
+            url: api_url,
+            type: 'POST',
+            data: {
+                action: 'getReports'
+            },
+            success: function (response) {
+                console.log(response);
+                let reports = JSON.parse(response);
+                let tbody = $('#reports-table tbody');
+                reports.forEach(report => {
+                    let tr = $('<tr>');
+                    tr.append($('<td>').text(report.reportType));
+                    tr.append($('<td>').text(JSON.stringify(report.report)));
+                    tbody.append(tr);
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        $.ajax({
+            url: api_url,
+            type: 'POST',
+            data: {
+                action: 'getOffers'
+            },
+            success: function (response) {
+                console.log(response);
+                let offers = JSON.parse(response);
+                let tbody = $('#offers-table tbody');
+                offers.forEach(offer => {
+                    let tr = $('<tr>');
+                    tr.append($('<td>').text(offer.offerType));
+                    tbody.append(tr);
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
     $('.selection.dropdown').dropdown({
         action: 'activate',
-        onChange: function (value, text, $selectedItem) {
+        onChange: function (value) {
             if (value === '1') {
                 $('#offer-car-id').show();
                 $('#offer-service-id').hide();
@@ -143,29 +224,20 @@ if (session_status() == PHP_SESSION_NONE) {
     });
 
     offerForm.submit(function (e) {
-        e.preventDefault();
-        let offerType = $('#offer-type').val();
-        let offerCarId = $('#offer-car-id').val();
-        let offerServiceId = $('#offer-service-id').val();
-        let offerPartId = $('#offer-part-id').val();
-        console.log(offerType, offerCarId, offerServiceId, offerPartId);
-        $.ajax({
-            url: api_url,
-            type: 'POST',
-            data: {
-                action: 'createOffer',
-                offerType: offerType,
-                offerCarId: offerCarId,
-                offerServiceId: offerServiceId,
-                offerPartId: offerPartId
-            },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+    e.preventDefault();
+    let formData = offerForm.serialize();
+    console.log(formData);
+    $.ajax({
+        url: api_url,
+        type: 'POST',
+        data: 'action=createOffer&' + formData,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
     });
+});
 
 </script>
