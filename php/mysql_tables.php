@@ -40,7 +40,12 @@ function createTables() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
-            cost DECIMAL NOT NULL
+            cost DECIMAL NOT NULL,
+            duration INT NOT NULL,
+            requiredExperienceLevel VARCHAR(50) NOT NULL,
+            isWarrantyService BOOLEAN NOT NULL,
+            toolsRequired TEXT NOT NULL,
+            serviceType VARCHAR(50) NOT NULL
         )',
         'CREATE TABLE parts (
             id INT PRIMARY KEY AUTO_INCREMENT,

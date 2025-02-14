@@ -307,8 +307,15 @@ function createService()
     $name = $_POST['name'];
     $description = $_POST['description'];
     $cost = $_POST['cost'];
-    $stmt = $DB_CONNECTION->prepare("INSERT INTO services (name, description, cost) VALUES (?, ?, ?)");
-    $stmt->bind_param("ssd", $name, $description, $cost);
+    $duration = $_POST['duration'];
+    $requiredExperienceLevel = $_POST['requiredExperienceLevel'];
+    $isWarrantyService = $_POST['isWarrantyService'];
+    error_log($isWarrantyService);
+    $isWarrantyService = $isWarrantyService === 'true' ? 1 : 0;
+    $toolsRequired = $_POST['toolsRequired'];
+    $serviceType = $_POST['serviceType'];
+    $stmt = $DB_CONNECTION->prepare("INSERT INTO services (name, description, cost, duration, requiredExperienceLevel, isWarrantyService, toolsRequired, serviceType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssdisiss", $name, $description, $cost, $duration, $requiredExperienceLevel, $isWarrantyService, $toolsRequired, $serviceType);
     $stmt->execute();
 }
 
@@ -319,8 +326,13 @@ function updateService()
     $name = $_POST['name'];
     $description = $_POST['description'];
     $cost = $_POST['cost'];
-    $stmt = $DB_CONNECTION->prepare("UPDATE services SET name = ?, description = ?, cost = ? WHERE id = ?");
-    $stmt->bind_param("ssdi", $name, $description, $cost, $id);
+    $duration = $_POST['duration'];
+    $requiredExperienceLevel = $_POST['requiredExperienceLevel'];
+    $isWarrantyService = $_POST['isWarrantyService'];
+    $toolsRequired = $_POST['toolsRequired'];
+    $serviceType = $_POST['serviceType'];
+    $stmt = $DB_CONNECTION->prepare("UPDATE services SET name = ?, description = ?, cost = ?, duration = ?, requiredExperienceLevel = ?, isWarrantyService = ?, toolsRequired = ?, serviceType = ? WHERE id = ?");
+    $stmt->bind_param("ssdissssi", $name, $description, $cost, $duration, $requiredExperienceLevel, $isWarrantyService, $toolsRequired, $serviceType, $id);
     $stmt->execute();
 }
 
