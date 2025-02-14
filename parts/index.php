@@ -56,6 +56,11 @@ if (session_status() == PHP_SESSION_NONE) {
                 <th>Name</th>
                 <th>Price</th>
                 <th>Stock</th>
+                <th>Manufacturer</th>
+                <th>Warranty period</th>
+                <th>Category</th>
+                <th>Weight</th>
+                <th>Dimensions</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -87,6 +92,26 @@ if (session_status() == PHP_SESSION_NONE) {
                 <label>Stock</label>
                 <input type="number" name="stock" required>
             </div>
+            <div class="field">
+                <label>Manufacturer</label>
+                <input type="text" name="manufacturer" required>
+            </div>
+            <div class="field">
+                <label>Warranty period</label>
+                <input type="number" name="warrantyPeriod" required>
+            </div>
+            <div class="field">
+                <label>Category</label>
+                <input type="text" name="category" required>
+            </div>
+            <div class="field">
+                <label>Weight</label>
+                <input type="number" name="weight" required>
+            </div>
+            <div class="field">
+                <label>Dimensions</label>
+                <input type="text" name="dimensions" required>
+            </div>
             <button class="ui button" type="submit">Add part</button>
         </form>
     </div>
@@ -115,6 +140,26 @@ if (session_status() == PHP_SESSION_NONE) {
                 <label>Stock</label>
                 <input type="number" name="editstock" required>
             </div>
+            <div class="field">
+                <label>Manufacturer</label>
+                <input type="text" name="editmanufacturer" required>
+            </div>
+            <div class="field">
+                <label>Warranty period</label>
+                <input type="number" name="editwarrantyPeriod" required>
+            </div>
+            <div class="field">
+                <label>Category</label>
+                <input type="text" name="editcategory" required>
+            </div>
+            <div class="field">
+                <label>Weight</label>
+                <input type="number" name="editweight" required>
+            </div>
+            <div class="field">
+                <label>Dimensions</label>
+                <input type="text" name="editdimensions" required>
+            </div>
             <button class="ui button" type="submit">Edit part</button>
         </form>
     </div>
@@ -140,6 +185,11 @@ if (session_status() == PHP_SESSION_NONE) {
                             <td>${part.name}</td>
                             <td>${part.cost}</td>
                             <td>${part.stock}</td>
+                            <td>${part.manufacturer}</td>
+                            <td>${part.warrantyPeriod}</td>
+                            <td>${part.category}</td>
+                            <td>${part.weight}</td>
+                            <td>${part.dimensions}</td>
                             <td>
                                 <a class="ui button" onclick="openEditPartModal(${part.id})">Edit</a>
                                 <a class="ui button" onclick="deletePart(${part.id})">Delete</a>
@@ -170,6 +220,11 @@ if (session_status() == PHP_SESSION_NONE) {
                 $('#editPartModal input[name="editdescription"]').val(part.description);
                 $('#editPartModal input[name="editcost"]').val(part.cost);
                 $('#editPartModal input[name="editstock"]').val(part.stock);
+                $('#editPartModal input[name="editmanufacturer"]').val(part.manufacturer);
+                $('#editPartModal input[name="editwarrantyPeriod"]').val(part.warrantyPeriod);
+                $('#editPartModal input[name="editcategory"]').val(part.category);
+                $('#editPartModal input[name="editweight"]').val(part.weight);
+                $('#editPartModal input[name="editdimensions"]').val(part.dimensions);
                 $('#editPartModal').modal('show');
             }
         });
@@ -185,7 +240,12 @@ if (session_status() == PHP_SESSION_NONE) {
                 name: $('input[name=name]').val(),
                 description: $('input[name=description]').val(),
                 cost: $('input[name=cost]').val(),
-                stock: $('input[name=stock]').val()
+                stock: $('input[name=stock]').val(),
+                manufacturer: $('input[name=manufacturer]').val(),
+                warrantyPeriod: $('input[name=warrantyPeriod]').val(),
+                category: $('input[name=category]').val(),
+                weight: $('input[name=weight]').val(),
+                dimensions: $('input[name=dimensions]').val()
             },
             success: function () {
                 location.reload();
@@ -204,7 +264,12 @@ if (session_status() == PHP_SESSION_NONE) {
                 name: $('input[name=editname]').val(),
                 description: $('input[name=editdescription]').val(),
                 cost: $('input[name=editcost]').val(),
-                stock: $('input[name=editstock]').val()
+                stock: $('input[name=editstock]').val(),
+                manufacturer: $('input[name=editmanufacturer]').val(),
+                warrantyPeriod: $('input[name=editwarrantyPeriod]').val(),
+                category: $('input[name=editcategory]').val(),
+                weight: $('input[name=editweight]').val(),
+                dimensions: $('input[name=editdimensions]').val()
             },
             success: function () {
                 location.reload();

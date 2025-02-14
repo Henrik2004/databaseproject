@@ -47,7 +47,12 @@ function createTables() {
             name VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
             cost DECIMAL NOT NULL,
-            stock INT NOT NULL
+            stock INT NOT NULL,
+            manufacturer VARCHAR(255) NOT NULL,
+            warrantyPeriod INT NOT NULL,
+            category VARCHAR(255) NOT NULL,
+            weight DECIMAL NOT NULL,
+            dimensions VARCHAR(255) NOT NULL
         )',
         'CREATE TABLE servicepart (
             serviceId INT NOT NULL,

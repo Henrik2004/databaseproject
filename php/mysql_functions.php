@@ -244,8 +244,13 @@ function createPart()
     $description = $_POST['description'];
     $cost = $_POST['cost'];
     $stock = $_POST['stock'];
-    $stmt = $DB_CONNECTION->prepare("INSERT INTO parts (name, description, cost, stock) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssdi", $name, $description, $cost, $stock);
+    $manufacturer = $_POST['manufacturer'];
+    $warrantyPeriod = $_POST['warrantyPeriod'];
+    $category = $_POST['category'];
+    $weight = $_POST['weight'];
+    $dimensions = $_POST['dimensions'];
+    $stmt = $DB_CONNECTION->prepare("INSERT INTO parts (name, description, cost, stock, manufacturer, warrantyPeriod, category, weight, dimensions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssdisssdd", $name, $description, $cost, $stock, $manufacturer, $warrantyPeriod, $category, $weight, $dimensions);
     $stmt->execute();
 }
 
@@ -257,8 +262,13 @@ function updatePart()
     $description = $_POST['description'];
     $cost = $_POST['cost'];
     $stock = $_POST['stock'];
-    $stmt = $DB_CONNECTION->prepare("UPDATE parts SET name = ?, description = ?, cost = ?, stock = ? WHERE id = ?");
-    $stmt->bind_param("ssdii", $name, $description, $cost, $stock, $id);
+    $manufacturer = $_POST['manufacturer'];
+    $warrantyPeriod = $_POST['warrantyPeriod'];
+    $category = $_POST['category'];
+    $weight = $_POST['weight'];
+    $dimensions = $_POST['dimensions'];
+    $stmt = $DB_CONNECTION->prepare("UPDATE parts SET name = ?, description = ?, cost = ?, stock = ?, manufacturer = ?, warrantyPeriod = ?, category = ?, weight = ?, dimensions = ? WHERE id = ?");
+    $stmt->bind_param("ssdisssddi", $name, $description, $cost, $stock, $manufacturer, $warrantyPeriod, $category, $weight, $dimensions, $id);
     $stmt->execute();
 }
 
